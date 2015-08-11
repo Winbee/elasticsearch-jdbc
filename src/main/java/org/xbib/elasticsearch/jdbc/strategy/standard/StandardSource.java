@@ -231,7 +231,7 @@ public class StandardSource<C extends StandardContext> implements JDBCSource<C> 
         return autocommit;
     }
 
-    public StandardSource<C>  setFetchSize(int fetchSize) {
+    public StandardSource<C> setFetchSize(int fetchSize) {
         this.fetchSize = fetchSize;
         return this;
     }
@@ -240,7 +240,7 @@ public class StandardSource<C extends StandardContext> implements JDBCSource<C> 
         return fetchSize;
     }
 
-    public StandardSource<C>  setMaxRows(int maxRows) {
+    public StandardSource<C> setMaxRows(int maxRows) {
         this.maxRows = maxRows;
         return this;
     }
@@ -249,7 +249,7 @@ public class StandardSource<C extends StandardContext> implements JDBCSource<C> 
         return maxRows;
     }
 
-    public StandardSource<C>  setRetries(int retries) {
+    public StandardSource<C> setRetries(int retries) {
         this.retries = retries;
         return this;
     }
@@ -258,7 +258,7 @@ public class StandardSource<C extends StandardContext> implements JDBCSource<C> 
         return retries;
     }
 
-    public StandardSource<C>  setMaxRetryWait(TimeValue maxretrywait) {
+    public StandardSource<C> setMaxRetryWait(TimeValue maxretrywait) {
         this.maxretrywait = maxretrywait;
         return this;
     }
@@ -267,7 +267,7 @@ public class StandardSource<C extends StandardContext> implements JDBCSource<C> 
         return maxretrywait;
     }
 
-    public StandardSource<C>  setRounding(String rounding) {
+    public StandardSource<C> setRounding(String rounding) {
         if ("ceiling".equalsIgnoreCase(rounding)) {
             this.rounding = BigDecimal.ROUND_CEILING;
         } else if ("down".equalsIgnoreCase(rounding)) {
@@ -292,7 +292,7 @@ public class StandardSource<C extends StandardContext> implements JDBCSource<C> 
         return rounding;
     }
 
-    public StandardSource<C>  setScale(int scale) {
+    public StandardSource<C> setScale(int scale) {
         this.scale = scale;
         return this;
     }
@@ -301,7 +301,7 @@ public class StandardSource<C extends StandardContext> implements JDBCSource<C> 
         return scale;
     }
 
-    public StandardSource<C>  setResultSetType(String resultSetType) {
+    public StandardSource<C> setResultSetType(String resultSetType) {
         this.resultSetType = resultSetType;
         return this;
     }
@@ -310,7 +310,7 @@ public class StandardSource<C extends StandardContext> implements JDBCSource<C> 
         return resultSetType;
     }
 
-    public StandardSource<C>  setResultSetConcurrency(String resultSetConcurrency) {
+    public StandardSource<C> setResultSetConcurrency(String resultSetConcurrency) {
         this.resultSetConcurrency = resultSetConcurrency;
         return this;
     }
@@ -319,7 +319,7 @@ public class StandardSource<C extends StandardContext> implements JDBCSource<C> 
         return resultSetConcurrency;
     }
 
-    public StandardSource<C>  shouldIgnoreNull(boolean shouldIgnoreNull) {
+    public StandardSource<C> shouldIgnoreNull(boolean shouldIgnoreNull) {
         this.shouldIgnoreNull = shouldIgnoreNull;
         return this;
     }
@@ -328,7 +328,7 @@ public class StandardSource<C extends StandardContext> implements JDBCSource<C> 
         return shouldIgnoreNull;
     }
 
-    public StandardSource<C>  shouldPrepareResultSetMetadata(boolean shouldPrepareResultSetMetadata) {
+    public StandardSource<C> shouldPrepareResultSetMetadata(boolean shouldPrepareResultSetMetadata) {
         this.shouldPrepareResultSetMetadata = shouldPrepareResultSetMetadata;
         return this;
     }
@@ -337,7 +337,7 @@ public class StandardSource<C extends StandardContext> implements JDBCSource<C> 
         return shouldPrepareResultSetMetadata;
     }
 
-    public StandardSource<C>  shouldPrepareDatabaseMetadata(boolean shouldPrepareDatabaseMetadata) {
+    public StandardSource<C> shouldPrepareDatabaseMetadata(boolean shouldPrepareDatabaseMetadata) {
         this.shouldPrepareDatabaseMetadata = shouldPrepareDatabaseMetadata;
         return this;
     }
@@ -346,7 +346,7 @@ public class StandardSource<C extends StandardContext> implements JDBCSource<C> 
         return shouldPrepareDatabaseMetadata;
     }
 
-    public StandardSource<C>  setLastResultSetMetadata(Map<String, Object> lastResultSetMetadata) {
+    public StandardSource<C> setLastResultSetMetadata(Map<String, Object> lastResultSetMetadata) {
         this.lastResultSetMetadata = lastResultSetMetadata;
         return this;
     }
@@ -355,7 +355,7 @@ public class StandardSource<C extends StandardContext> implements JDBCSource<C> 
         return lastResultSetMetadata;
     }
 
-    public StandardSource<C>  setLastDatabaseMetadata(Map<String, Object> lastDatabaseMetadata) {
+    public StandardSource<C> setLastDatabaseMetadata(Map<String, Object> lastDatabaseMetadata) {
         this.lastDatabaseMetadata = lastDatabaseMetadata;
         return this;
     }
@@ -364,7 +364,7 @@ public class StandardSource<C extends StandardContext> implements JDBCSource<C> 
         return lastDatabaseMetadata;
     }
 
-    public StandardSource<C>  setLastRowCount(long lastRowCount) {
+    public StandardSource<C> setLastRowCount(long lastRowCount) {
         this.lastRowCount = lastRowCount;
         return this;
     }
@@ -373,7 +373,7 @@ public class StandardSource<C extends StandardContext> implements JDBCSource<C> 
         return lastRowCount;
     }
 
-    public StandardSource<C>  setColumnNameMap(Map<String, Object> columnNameMap) {
+    public StandardSource<C> setColumnNameMap(Map<String, Object> columnNameMap) {
         this.columnNameMap = columnNameMap;
         return this;
     }
@@ -382,7 +382,7 @@ public class StandardSource<C extends StandardContext> implements JDBCSource<C> 
         return columnNameMap;
     }
 
-    public StandardSource<C>  setLastRow(Map<String, Object> lastRow) {
+    public StandardSource<C> setLastRow(Map<String, Object> lastRow) {
         this.lastRow = lastRow;
         return this;
     }
@@ -400,7 +400,7 @@ public class StandardSource<C extends StandardContext> implements JDBCSource<C> 
         return sql;
     }
 
-    public StandardSource<C>  setTimestampDiffSupported(boolean supported) {
+    public StandardSource<C> setTimestampDiffSupported(boolean supported) {
         this.isTimestampDiffSupported = supported;
         return this;
     }
@@ -459,19 +459,20 @@ public class StandardSource<C extends StandardContext> implements JDBCSource<C> 
             while (retries > 0) {
                 retries--;
                 try {
+                    Properties properties = new Properties();
+                    properties.put("readOnly", "true");
                     if (user != null) {
-                        Properties properties = new Properties();
                         properties.put("user", user);
                         if (password != null) {
                             properties.put("password", password);
                         }
-                        if (getConnectionProperties() != null) {
-                            properties.putAll(getConnectionProperties());
-                        }
-                        readConnection = DriverManager.getConnection(url, properties);
-                    } else {
-                        readConnection = DriverManager.getConnection(url);
                     }
+                    if (getConnectionProperties() != null) {
+                        properties.putAll(getConnectionProperties());
+                    }
+
+                    readConnection = DriverManager.getConnection(url, properties);
+
                     DatabaseMetaData metaData = readConnection.getMetaData();
                     if (shouldPrepareDatabaseMetadata()) {
                         prepare(metaData);
@@ -479,8 +480,7 @@ public class StandardSource<C extends StandardContext> implements JDBCSource<C> 
                     if (metaData.getTimeDateFunctions().contains("TIMESTAMPDIFF")) {
                         setTimestampDiffSupported(true);
                     }
-                    // "readonly" is required by MySQL for large result streaming
-                    readConnection.setReadOnly(true);
+
                     // Postgresql cursor mode condition:
                     // fetchsize > 0, no scrollable result set, no auto commit, no holdable cursors over commit
                     // https://github.com/pgjdbc/pgjdbc/blob/master/org/postgresql/jdbc2/AbstractJdbc2Statement.java#L514
@@ -905,8 +905,8 @@ public class StandardSource<C extends StandardContext> implements JDBCSource<C> 
             Object o = m.get("pos");
             if (o != null) {
                 Integer n = o instanceof Integer ? (Integer) o : Integer.parseInt(o.toString());
-                o =  m.get("type");
-                String type = o instanceof String ? (String) o: o.toString();
+                o = m.get("type");
+                String type = o instanceof String ? (String) o : o.toString();
                 if (type != null) {
                     logger.debug("registerOutParameter: n={} type={}", n, toJDBCType(type));
                     try {
