@@ -42,14 +42,14 @@ echo '
                         "creation_date" : {"type" : "date", "format": "YYYYMMddHHmmss"}
                       }
                   },
-                  "account":{
+                  "main_account":{
                       "type": "object",
                       "properties" : {
                         "id" : {"type" : "string", "index" : "not_analyzed"},
                         "name" : {"type" : "string", "index" : "not_analyzed", "norms" : { "enabled" : false }},
                         "type" : {"type" : "string", "index" : "not_analyzed", "norms" : { "enabled" : false }},
                         "description" : {"type" : "string", "index" : "analyzed"},
-                        "code" : {"type" : "integer"}
+                        "code" : {"type" : "string", "index" : "not_analyzed", "norms" : { "enabled" : false }}
                       }
                   },
                   "sub_accounts":{
@@ -58,7 +58,7 @@ echo '
                         "id" : {"type" : "string", "index" : "not_analyzed"},
                         "name" : {"type" : "string", "index" : "not_analyzed", "norms" : { "enabled" : false }},
                         "type" : {"type" : "string", "index" : "not_analyzed", "norms" : { "enabled" : false }},
-                        "code" : {"type" : "integer"}
+                        "code" : {"type" : "string", "index" : "not_analyzed", "norms" : { "enabled" : false }}
                       }
                   },                     
                   "commodity":{
